@@ -83,8 +83,6 @@ sql_columns = sql_columns[:-1]
 sql_columns = sql_columns + " );"
 CreateTable = CreateTable+sql_columns
 
-MainQuery = "copy (select MAX(physball100), REGNAME FROM ODATA GROUP BY REGNAME, physteststatus HAVING physteststatus = 'Зараховано') to 'C:\\Users\\Osphi\\PycharmProjects\\bd_lab_1\\QueryResult.csv' with CSV HEADER;"
-
 for i in Odata.columns:
      if(Odata[i].dtype == "object"):
          Odata[i] = Odata[i].str.replace("'", "`")
@@ -118,7 +116,7 @@ end_time = time.time()
 
 print("Insertion time: ", end_time-start_time)
 
-MainQuery = "select MAX(physball100), REGNAME FROM ODATA GROUP BY REGNAME, physteststatus HAVING physteststatus = 'Зараховано';"
+MainQuery = "select MAX(physball100), REGNAME, YEAR FROM ODATA GROUP BY REGNAME,YEAR, physteststatus HAVING physteststatus = 'Зараховано' AND(YEAR = 2019 OR YEAR = 2021)"
 while(not TryExecute(conn, MainQuery, 1)):
     conn = connect(username, password, database, host, port)
 
