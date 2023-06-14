@@ -23,15 +23,37 @@ services:
     ports:
       - "5050:5050"
 
-  app:
-    build: ./app
+  db_initial_insert:
+    build: ./db_initial_insert
     volumes:
-      - appdata:/app
+     - rowdata:/db_initial_insert
     restart: on-failure
     depends_on:
+      - pg-admin
       - db
+
+  flyway:
+    image: redgate/flyway
+    container_name: flyway
+    command: -configFiles=/flyway/conf/flyway.config -locations=filesystem:/flyway/sql -connectRetries=60 migrate
+    volumes:
+      - ./flyway/conf/:/flyway/conf
+      - ./flyway/sql/:/flyway/sql
+    depends_on:
+      db_initial_insert:
+          condition: service_completed_successfully
+
+  db_main_query:
+    build: ./app
+    volumes:
+     - appdata:/appd
+    restart: on-failure
+    depends_on:
+      flyway:
+          condition: service_completed_successfully
 
 volumes: 
   data: null
   pgadmin: null
   appdata: null
+  rowdata: null

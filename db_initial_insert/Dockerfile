@@ -1,10 +1,10 @@
 FROM python:latest
 
+WORKDIR /app
+
 ADD requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-WORKDIR /app
-
 COPY . .
 
-CMD ["python", "-u", "main_query.py"]
+CMD ["python", "-u", "database_creation_and_insertion.py"]
