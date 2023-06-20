@@ -7,4 +7,5 @@ WORKDIR /app
 
 COPY . .
 
-CMD ["python", "-u", "main_query.py"]
+CMD ["python", "-u", "app.py"]
+#CMD ["python", "-u", "main_query.py"]

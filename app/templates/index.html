@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>For Example</title>
+    </head>
+    <body>
+        <form action = '/query' method = 'post'>
+            <div style = " display: flex; flex-direction: row;">
+            <h1>Years</h1>
+            <div style = " display: flex; flex-direction: column;">
+            {% for year in years%}
+                <label for="{{year}}">{{year}}</label>
+                <input type = checkbox id = "{{year}}" name = 'years' value = "{{year}}">
+            {% endfor %}
+            </div>
+            <h1>Subjects</h1>
+            <div style = " display: flex; flex-direction: column;">
+            {% for subject in subjects%}
+                <label for="{{subject}}">{{subject}}</label>
+                <input type = checkbox id = "{{subject}}" name = 'subjects' value = "{{subject}}">
+            {% endfor %}
+            </div>
+            <h1>Regions</h1>
+            <div style = " display: flex; flex-direction: column;">
+            {% for region in regions%}
+                <label for="{{region}}">{{region}}</label>
+                <input type = checkbox id = "{{region}}" name = 'regions' value = "{{region}}">
+            {% endfor %}
+            </div>
+            </div>
+            <button type="submit">Search</button>
+        </form>
+    </body>
+</html>

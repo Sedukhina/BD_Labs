@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>For Example</title>
+    </head>
+    <body>
+        <h2> Your Query Result:  </h2>
+        <div style = " display: flex; flex-direction: row;">
+            <div style = " display: flex; flex-direction: column; overflow: scroll">
+            {% for query_ress in query_res%}
+                <p>{{query_ress}}</p>
+            {% endfor %}
+        </div>
+    </body>
+</html>
