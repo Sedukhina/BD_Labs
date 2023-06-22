@@ -26,7 +26,7 @@ def InsertOdataRows(conn, rows):
             rows_str.append(str(row).replace("nan", "null"))
         cur = conn.cursor()
         for row in rows_str:
-            cur.execute("INSERT INTO Odata VALUES " + row)
+            cur.execute("INSERT INTO Odata VALUES " + row + " ON CONFLICT do nothing;")
         conn.commit()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
