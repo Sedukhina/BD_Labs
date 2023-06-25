@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% block query_params %}
+    <form action = '/main_query_result' method = 'post'>
+        <div style = " display: flex; flex-direction: row;">
+            <div style = " display: flex; flex-direction: column;">
+                <h1>Years</h1>
+                {% for year in years%}
+                    <label for="{{year}}">{{year}}</label>
+                    <input type = checkbox id = "{{year}}" name = 'years' value = "{{year}}">
+                {% endfor %}
+            </div>
+            <div style = " display: flex; flex-direction: column;">
+                <h1>Subjects</h1>
+                {% for subject in subjects%}
+                    <label for="{{subject}}">{{subject}}</label>
+                    <input type = checkbox id = "{{subject}}" name = 'subjects' value = "{{subject}}">
+                {% endfor %}
+            </div>
+            <div style = " display: flex; flex-direction: column;">
+                <h1>Regions</h1>
+                {% for region in regions%}
+                    <label for="{{region}}">{{region}}</label>
+                    <input type = checkbox id = "{{region}}" name = 'regions' value = "{{region}}">
+                {% endfor %}
+            </div>
+        </div>
+        <button type="submit">Search</button>
+    </form>
+{% endblock %}

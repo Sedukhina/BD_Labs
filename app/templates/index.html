@@ -1,34 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
         <title>For Example</title>
     </head>
     <body>
-        <form action = '/query' method = 'post'>
-            <div style = " display: flex; flex-direction: row;">
-            <h1>Years</h1>
-            <div style = " display: flex; flex-direction: column;">
-            {% for year in years%}
-                <label for="{{year}}">{{year}}</label>
-                <input type = checkbox id = "{{year}}" name = 'years' value = "{{year}}">
+        <div class = "HorizonalFlex">
+            {% for table in tables%}
+            <form action="/query" method="post">
+                <input style= "display: none;" id = "{{table}}" name = 'model' value = "{{table}}">
+                <h4> <button type="submit">{{table}} </button></h4>
+            </form>
             {% endfor %}
-            </div>
-            <h1>Subjects</h1>
-            <div style = " display: flex; flex-direction: column;">
-            {% for subject in subjects%}
-                <label for="{{subject}}">{{subject}}</label>
-                <input type = checkbox id = "{{subject}}" name = 'subjects' value = "{{subject}}">
-            {% endfor %}
-            </div>
-            <h1>Regions</h1>
-            <div style = " display: flex; flex-direction: column;">
-            {% for region in regions%}
-                <label for="{{region}}">{{region}}</label>
-                <input type = checkbox id = "{{region}}" name = 'regions' value = "{{region}}">
-            {% endfor %}
-            </div>
-            </div>
-            <button type="submit">Search</button>
-        </form>
+            <form action = '/main_query' method = 'post'>
+                <h4><button>Main Query</button></h4>
+            </form>
+        </div>
+        {% block query_params %}{% endblock %} 
+        {% block query_result %}{% endblock %} 
     </body>
 </html>

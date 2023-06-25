@@ -1,0 +1,25 @@
+button, .button{
+    border-radius: 3px;
+    background-color: darkgoldenrod;
+    font-size: 20px;
+}
+
+.HorizonalFlex{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.QueryResults{
+    overflow: scroll;
+}
+
+table, th, td {
+    border:1px solid black;
+    font-size: 20px;
+}
+
+label{
+    font-size: 20px;
+}

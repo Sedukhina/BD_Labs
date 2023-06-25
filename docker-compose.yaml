@@ -59,8 +59,19 @@ services:
     ports:
       - 6379
 
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: username
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes: 
+      - mongodbdata:/mongo/db
+    ports:
+      - "27018:27017" 
+
 volumes: 
   data: null
   pgadmin: null
   appdata: null
   rowdata: null
+  mongodbdata: null

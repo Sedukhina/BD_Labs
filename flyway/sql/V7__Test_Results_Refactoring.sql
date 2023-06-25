@@ -1,9 +1,6 @@
 BEGIN;
     CREATE TABLE IF NOT EXISTS Test_Statuses(Status_ID SERIAL, Status VARCHAR);
     INSERT INTO Test_Statuses(Status) SELECT DISTINCT status FROM Test_Results;
-
-    CREATE TABLE IF NOT EXISTS Test_Statuses(Status_ID SERIAL, Status VARCHAR);
-    INSERT INTO Test_Statuses(Status) SELECT DISTINCT status FROM Test_Results;
     ALTER TABLE Test_Results ADD COLUMN STATUS_ID INT;
     UPDATE Test_Results SET STATUS_ID = Test_Statuses.Status_ID FROM Test_Statuses WHERE Test_Results.status = Test_Statuses.Status;
     ALTER TABLE Test_Results DROP COLUMN STATUS;

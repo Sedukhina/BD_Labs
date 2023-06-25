@@ -1,9 +1,15 @@
-{% extends "query.html" %}
+{% extends "main_query.html" %}
 
 {% block query_result %}
 <body>
     <h2> Your Query Result:  </h2>
     <table class = "QueryResults">
+        <tr>
+            <th>Ball</th>
+            <th>Year</th>
+            <th>Region</th>
+            <th>Subject</th>
+          </tr>
         {% for query_ress in query_res%}
             <tr>
             {% for query_resss in query_ress%}

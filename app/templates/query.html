@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% block query_params %}
+    <form action = '/query_result' method = 'post'>
+        <input style= "display: none;" name = 'model' value = "{{model}}">
+        <table>
+            <tr>
+                {% for column in columns%}
+                    <td>{{column}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for column in columns%}
+                    <td><input type = text id = "{{column}}" name = '{{column}}'></td>
+                {% endfor %}
+            </tr>
+        </table>
+
+        <div class = "HorizonalFlex">
+            <div>
+                <label for="mongo">Mongo</label>
+                <input type = checkbox name = "mongo" value = "mongo" id = "mongo">
+            </div>
+            <input class="button" type="submit" name="action" value="Insert" />
+            <input class="button" type="submit" name="action" value="Read" />
+            <input class="button" type="submit" name="action" value="Delete" />
+        </div>
+    </form>
+{% endblock %}
